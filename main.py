@@ -14,7 +14,6 @@ import shutil
 
 # import "objects" from "this" project
 from __init__ import app, db, login_manager  # Key Flask objects 
-
 # Existing imports...
 from api.pfp import pfp_api
 from api.nestImg import nestImg_api  # Justin added this, custom format for his website
@@ -25,7 +24,7 @@ from api.section import section_api
 from api.nestPost import nestPost_api  # Justin added this, custom format for his website
 from api.messages_api import messages_api  # Adi added this, messages for his website
 from api.vote import vote_api
-from api.restaurant_api import restaurant_api  # Import the restaurant API routes
+from api.restaurant_api import restaurant_api  # Ryan added this for the restaurant API routes
 
 # Existing database Initialization functions
 from model.user import User, initUsers
@@ -35,17 +34,15 @@ from model.channel import Channel, initChannels
 from model.post import Post, initPosts
 from model.nestPost import NestPost, initNestPosts  # Justin added this, custom format for his website
 from model.vote import Vote, initVotes
-from model.restaurant import Restaurant, initRestaurants  # Import the restaurant model and init function
+from model.restaurant import Restaurant, initRestaurant  # Import the restaurant model and init function
 
 # Existing code for server only views...
 
-# Register the new restaurant API routes
-app.register_blueprint(restaurant_api)  # Register the new restaurant API blueprint
 
 # Register existing URIs for api endpoints (no changes here)
 app.register_blueprint(messages_api)  # Adi added this, messages for his website
-app.register_blueprint(user_api)
 app.register_blueprint(pfp_api)
+app.register_blueprint(current_user)
 app.register_blueprint(post_api)
 app.register_blueprint(channel_api)
 app.register_blueprint(group_api)
@@ -53,6 +50,7 @@ app.register_blueprint(section_api)
 app.register_blueprint(nestPost_api)
 app.register_blueprint(nestImg_api)
 app.register_blueprint(vote_api)
+app.register_blueprint(restaurant_api)
 
 # Rest of the code remains unchanged...
 # Login manager and view functions...
